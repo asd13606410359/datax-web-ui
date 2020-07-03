@@ -137,6 +137,21 @@ export const asyncRoutes = [
     meta: { title: '任务日志', icon: 'work' }
   },
   {
+    path: '/datax/project',
+    component: Layout,
+    redirect: '/datax/jobProject',
+    name: 'datasource',
+    meta: { title: '项目管理', icon: 'project' },
+    children: [
+      {
+        path: 'jobProject',
+        name: 'jobProject',
+        component: () => import('@/views/datax/jobProject/index'),
+        meta: { title: '项目管理', icon: 'project' }
+      }
+    ]
+  },
+  {
     path: '/datax/job',
     component: Layout,
     redirect: '/datax/job',
@@ -151,17 +166,32 @@ export const asyncRoutes = [
         meta: { title: '任务管理', icon: 'task-cfg' }
       },
       {
-        path: 'jobTemplate',
-        name: 'JobTemplate',
-        component: () => import('@/views/datax/jobTemplate/index'),
-        meta: { title: 'datax 任务模板', icon: 'task-tmp' }
-      },
-      {
         path: 'jsonBuild',
         name: 'JsonBuild',
         component: () => import('@/views/datax/json-build/index'),
         meta: { title: '任务构建', icon: 'guide', noCache: false }
       },
+      {
+        path: 'jsonBuildBatch',
+        name: 'JsonBuildBatch',
+        component: () => import('@/views/datax/json-build-batch/index'),
+        meta: { title: '任务批量构建', icon: 'batch-create', noCache: false }
+      },
+      {
+        path: 'jobTemplate',
+        name: 'JobTemplate',
+        component: () => import('@/views/datax/jobTemplate/index'),
+        meta: { title: 'DataX任务模板', icon: 'task-tmp' }
+      }
+    ]
+  },
+  {
+    path: '/datax/datasource',
+    component: Layout,
+    redirect: '/datax/jdbc-datasource',
+    name: 'datasource',
+    meta: { title: '数据源管理', icon: 'cfg-datasouce' },
+    children: [
       {
         path: 'jdbcDatasource',
         name: 'JdbcDatasource',
@@ -211,7 +241,7 @@ export const asyncRoutes = [
         path: 'user',
         name: 'User',
         component: () => import('@/views/datax/user/index'),
-        meta: { title: '用户管理', icon: 'table'}
+        meta: { title: '用户管理', icon: 'table' }
       }
     ]
   },

@@ -90,11 +90,12 @@ export function getJobIdList(params) {
     params
   })
 }
-
-export function getJobProjectList(params) {
+// batchAdd
+export function batchAddJob(data) {
   return request({
-    url: 'api/job/projects',
-    method: 'get',
-    params
+    url: '/api/job/batchAdd',
+    method: 'post',
+    data
   })
 }
+
